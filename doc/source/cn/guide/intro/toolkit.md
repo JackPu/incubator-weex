@@ -1,5 +1,5 @@
 ---
-title: 使用 Devtools
+title: 使用 weex-toolkit
 type: guide
 order: 4.7
 version: 2.1
@@ -7,11 +7,11 @@ version: 2.1
 
 # weex-toolkit
 
-[weex-toolkit](https://github.com/weexteam/weex-toolkit) 是官方提供的一个脚手架命令行工具，你可以使用它进行文件的调试，创建以及打包等功能。
+[weex-toolkit](https://github.com/weexteam/weex-toolkit) 是官方提供的一个脚手架命令行工具，你可以使用它进行Weex项目的创建，调试以及打包等功能。
 
 ### 安装
 
-你可以直接输入命令:
+使用npm安装:
 
 ``` bash
 $ npm install -g weex-toolkit
@@ -24,14 +24,14 @@ $ npm install -g weex-toolkit
 
 *请确保你的node 版本是>=6,你可以使用 [n](https://github.com/tj/n) 来进行node的版本管理*
 
-中国用户如果npm遭遇网络问题，可以使用淘宝的 npm 镜像， [cnpm](https://npm.taobao.org/)：
+中国用户如果npm遭遇网络问题，可以使用淘宝的 cnpm 镜像， [cnpm](https://npm.taobao.org/)：
 
 ``` bash
 $ npm install -g cnpm --registry=https://registry.npm.taobao.org
 $ cnpm install -g weex-toolkit
 ```
 
-如果你安装的过程中遇到了问题，比如 permission error你可以去[weex-toolkit issues](https://github.com/weexteam/weex-toolkit/issues)找到一些解决方法。
+如果你安装的过程中遇到了问题，比如*permission error*你可以去[weex-toolkit issues](https://github.com/weexteam/weex-toolkit/issues)找到解决方法。
 
 
 ### 初始化 weex 项目
@@ -60,7 +60,7 @@ $ weex init awesome-project
 
 ### 实时预览
 
-weex-toolkit支持预览你当前开发的weex页面(.we或者.vue)，你只需要输入下面的命令即可:
+weex-toolkit支持预览你当前开发的weex页面(.we或者.vue)，你只需要指定预览的文件路径即可:
 
 ``` bash
 $ weex src/foo.vue 
@@ -73,16 +73,16 @@ $ weex src/foo.vue
 ``` bash
 $ weex src --entry src/foo.vue
 ```
-
+你需要在传入的参数指定预览的目录和入口文件。
 
 ### 打包weex项目
 
-如果拟开发完成后，可以使用`weex compile`通过命令行工具进行单个文件或者整个项目的打包。
+如果开发完成后，你可以使用`weex compile`通过命令行工具进行单个文件或者整个项目的打包。
 
 ``` bash
 weex compile src/foo.vue dist
 ```
-命令行只需要两个参数，你的源码文件或者目录， 以及你生成打包后的目录地址。
+命令行需要两个参数，你的源码文件或者目录， 以及你生成打包后的目录地址。
 
 
 
@@ -92,7 +92,9 @@ weex-toolkit支持调试工具**weex devtools**，它是专门为weex定制的�
 
 #### 用法
 
+``` bash
  weex debug [options] [we_file|bundles_dir]
+ ```
 
   选项:
 
@@ -226,9 +228,6 @@ $ weex plugin remove weex-chart
 ```
 
 关于weexpack 更加详细的介绍，你可以阅读 [官方文档](https://github.com/weexteam/weex-pack)
-
-
-
 
 
 
