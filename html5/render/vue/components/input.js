@@ -27,7 +27,9 @@ export default {
       type: [String, Boolean],
       default: false
     },
-    maxlength: [String, Number]
+    maxlength: [String, Number],
+    retunrKeytype: String
+    
   },
 
   render (createElement) {
@@ -44,7 +46,8 @@ export default {
         disabled: (this.disabled !== 'false' && this.disabled !== false),
         autofocus: (this.autofocus !== 'false' && this.autofocus !== false),
         placeholder: this.placeholder,
-        maxlength: this.maxlength
+        maxlength: this.maxlength,
+        'returnKeyType': this.returnKeyType
       },
       on: extend(this.createEventMap(), mapFormEvents(this)),
       staticClass: 'weex-input'

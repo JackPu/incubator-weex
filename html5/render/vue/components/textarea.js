@@ -18,7 +18,8 @@ export default {
     rows: {
       type: [String, Number],
       default: 2
-    }
+    },
+    returnKeyType: Strinh
   },
 
   render (createElement) {
@@ -34,7 +35,8 @@ export default {
         disabled: (this.disabled !== 'false' && this.disabled !== false),
         autofocus: (this.autofocus !== 'false' && this.autofocus !== false),
         placeholder: this.placeholder,
-        rows: this.rows
+        rows: this.rows,
+        'return-ket-type': this.returnKeyType
       },
       on: extend(this.createEventMap(), mapFormEvents(this)),
       staticClass: 'weex-textarea'

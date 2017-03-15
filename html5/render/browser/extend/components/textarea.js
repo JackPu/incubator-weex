@@ -34,6 +34,9 @@ const attr = {
   },
   autofocus (val) {
     this.node.autofocus = !!val
+  },
+  returnKeyType (val) {
+    this.node.returnKeyType = val || ''
   }
 }
 

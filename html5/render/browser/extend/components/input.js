@@ -34,7 +34,14 @@ const proto = {
     node.classList.add(this.className)
     node.classList.add('weex-element')
     this.placeholder && (node.placeholder = this.placeholder)
+    this.createKeybordEvent(node)
     return node
+  },
+
+  createKeybordEvent (node) {
+    node.addEventListener('keyup', (ev) => {
+      this.dispatchEvent('return', {keyType: ev.keCode})
+    }, false)
   },
 
   focus () {
@@ -68,6 +75,10 @@ const attr = {
     this.node.type = availableTypes.indexOf(val) !== -1
       ? val
       : DEFAULT_TYPE
+  },
+
+  returnKeyType (val) {
+    this.node.returnKeyType = val || ''
   }
 }
 
@@ -108,6 +119,23 @@ const event = {
       return {
         value: this.node.value,
         timestamp: Date.now()
+      }
+    }
+  },
+
+  return: {
+    updator: function (obj) {
+      console.log(obj);
+      return {
+        attrs: {
+          value: this.node.value
+        }
+      }
+    },
+    extra: function (keyType) {
+      console.log(keyType);
+      return {
+        value: this.node.value
       }
     }
   }
