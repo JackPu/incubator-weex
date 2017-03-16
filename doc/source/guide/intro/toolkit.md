@@ -55,7 +55,6 @@ Try the command below , you’ll preview the whole directory files.
 ``` bash
 $ weex src --entry src/foo.vue
 ```
-你需要在传入的参数指定预览的目录和入口文件。
 You need to specify the directory path and the entry file(--entry)
 ### build weex project
 Use ` weex compile ` to build your single weex file or the whole project.
