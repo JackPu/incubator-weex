@@ -1,4 +1,5 @@
 'use strict'
+import { findEnterKeyType } from '../../utils/index'
 
 let appendStyle
 
@@ -38,10 +39,21 @@ const proto = {
     return node
   },
 
+  // support enter key envent
   createKeybordEvent (node) {
-    node.addEventListener('keyup', (ev) => {
-      this.dispatchEvent('return', {keyType: ev.keCode})
-    }, false)
+    if (Array.isArray(this.data.event) && this.data.event.indexOf('return') > -1) {
+      node.addEventListener('keyup', (ev) => {
+        const code = ev.keyCode
+        let key = ev.key
+        if (code === 13) {
+          if (key.toLowerCase() === 'tab') {
+            key = 'next'
+          }
+          const rightKeyType = findEnterKeyType(this.data.attr['returnKeyType'])
+          this.dispatchEvent('return', { returnKeyType: rightKeyType })
+        }
+      }, false)
+    }
   },
 
   focus () {
@@ -125,17 +137,10 @@ const event = {
 
   return: {
     updator: function (obj) {
-      console.log(obj);
       return {
         attrs: {
           value: this.node.value
         }
-      }
-    },
-    extra: function (keyType) {
-      console.log(keyType);
-      return {
-        value: this.node.value
       }
     }
   }
