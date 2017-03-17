@@ -48,6 +48,8 @@ export function camelToKebab (name) {
 
 /**
  * Mix properties into target object.
+ * this function will be updated in the future references: https://github.com/justmoon/node-extend/blob/master/index.js
+ * or Object.assign
  */
 export function extend (to, _from) {
   for (const key in _from) {

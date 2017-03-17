@@ -15,12 +15,12 @@ const proto = {
     const node = document.createElement('textarea')
     node.classList.add('weex-element')
     node.classList.add('weex-textarea')
-    this.createKeybordEvent(node)
+    this.createkeyboardEvent(node)
     return node
   },
 
   // support enter key envent
-  createKeybordEvent (node) {
+  createkeyboardEvent (node) {
     if (Array.isArray(this.data.event) && this.data.event.indexOf('return') > -1) {
       node.addEventListener('keyup', (ev) => {
         const code = ev.keyCode

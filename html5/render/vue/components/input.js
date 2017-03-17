@@ -1,9 +1,9 @@
-import { base } from '../mixins'
+import { base, inputCommon } from '../mixins'
 import { extend, mapFormEvents } from '../utils'
 import { validateStyles } from '../validator'
 
 export default {
-  mixins: [base],
+  mixins: [base, inputCommon],
   props: {
     type: {
       type: String,
@@ -29,7 +29,6 @@ export default {
     },
     maxlength: [String, Number],
     retunrKeytype: String
-    
   },
 
   render (createElement) {
@@ -37,7 +36,7 @@ export default {
     if (process.env.NODE_ENV === 'development') {
       validateStyles('input', this.$vnode.data && this.$vnode.data.staticStyle)
     }
-
+    const events = extend(this.createEventMap(), mapFormEvents(this))
     return createElement('html:input', {
       attrs: {
         'weex-type': 'input',
@@ -49,7 +48,7 @@ export default {
         maxlength: this.maxlength,
         'returnKeyType': this.returnKeyType
       },
-      on: extend(this.createEventMap(), mapFormEvents(this)),
+      on: this.createKeyboardEvent(events),
       staticClass: 'weex-input'
     })
   }
