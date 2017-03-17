@@ -23,7 +23,7 @@
     height: 280px;
     width: 400px;
     border-width: 2px;
-    border-color: #000;
+    border-color: #ccc;
   }
 </style>
 
